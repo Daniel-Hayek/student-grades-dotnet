@@ -1,15 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
 
-namespace MvcMovie.Controllers;
+namespace student_grades_dotnet.Controllers;
 
-public class HelloWorldController : Controller
+public class StudentController : Controller
 {
     // 
     // GET: /HelloWorld/
-    public string Index()
+    public IActionResult Index()
     {
-        return "This is my default action...";
+        return View();
     }
     // 
     // GET: /HelloWorld/Welcome/ 
