@@ -7043,9 +7043,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Danny\\Desktop\\Computer Science\\Personal Projects\\student-grades-dotnet\\student-grades-dotnet.csproj",
-      "projectName": "student-grades-dotnet",
-      "projectPath": "C:\\Users\\Danny\\Desktop\\Computer Science\\Personal Projects\\student-grades-dotnet\\student-grades-dotnet.csproj",
+      "projectUniqueName": "C:\\Users\\Danny\\Desktop\\Computer Science\\Personal Projects\\student-grades-dotnet\\StudentGradesDotnet.csproj",
+      "projectName": "StudentGradesDotnet",
+      "projectPath": "C:\\Users\\Danny\\Desktop\\Computer Science\\Personal Projects\\student-grades-dotnet\\StudentGradesDotnet.csproj",
       "packagesPath": "C:\\Users\\Danny\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Danny\\Desktop\\Computer Science\\Personal Projects\\student-grades-dotnet\\obj\\",
       "projectStyle": "PackageReference",
