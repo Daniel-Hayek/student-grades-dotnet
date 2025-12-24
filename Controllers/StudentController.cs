@@ -22,12 +22,15 @@ namespace StudentGradesDotnet.Controllers
 
 
         // GET: Student
+        // This was an endpoint created for testing
         [HttpGet]
         [Route("/students")]
         public async Task<IActionResult> GetAllStudents()
         {
             return Ok(await _studentService.GetAllStudents());
         }
+
+        
 
     }
 }

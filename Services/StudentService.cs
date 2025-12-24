@@ -16,6 +16,11 @@ public class StudentService : IStudentService
 
     public async Task<IEnumerable<Student>> GetAllStudents()
     {
+        return await _context.Students.Include(s => s.Grades).ToListAsync();
+    }
+
+    public async Task<IEnumerable<Student>> StudentAverages()
+    {
         return await _context.Students.ToListAsync();
     }
 }
