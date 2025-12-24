@@ -8,7 +8,7 @@ public class Grade
     public int Course_Id { get; set; }
 
     public string? Course_Name { get; set; }
-    public decimal GradeValue { get; set; }
+    public int GradeValue { get; set; }
 
     public Student? Student { get; set; }
 }
