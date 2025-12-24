@@ -34,21 +34,19 @@ public static class DbSeeder
             new { Id = 5, Name = "English" }
         };
 
-        var gradeFaker = new Faker<Grade>()
-            .RuleFor(g => g.Course_Id, f => f.PickRandom(courses).Id)
-            .RuleFor(g => g.Course_Name, (f, g) =>
-                courses.First(c => c.Id == g.Course_Id).Name)
-            .RuleFor(g => g.GradeValue, f => f.Random.Number(30, 100));
-
         var grades = new List<Grade>();
 
         foreach (var student in students)
         {
             foreach (var course in courses)
             {
-                grades.Add(gradeFaker.Clone()
-                    .RuleFor(g => g.Student_Id, student.Id)
-                    .Generate());
+                grades.Add(new Grade
+                {
+                    Student_Id = student.Id,
+                    Course_Id = course.Id,
+                    Course_Name = course.Name,
+                    GradeValue = new Random().Next(30, 101)
+                });
             }
         }
 

@@ -418,3 +418,4 @@ C:\Users\Danny\Desktop\Computer Science\Personal Projects\student-grades-dotnet\
 C:\Users\Danny\Desktop\Computer Science\Personal Projects\student-grades-dotnet\obj\Debug\net10.0\StudentGradesDotnet.pdb
 C:\Users\Danny\Desktop\Computer Science\Personal Projects\student-grades-dotnet\obj\Debug\net10.0\StudentGradesDotnet.genruntimeconfig.cache
 C:\Users\Danny\Desktop\Computer Science\Personal Projects\student-grades-dotnet\obj\Debug\net10.0\ref\StudentGradesDotnet.dll
+C:\Users\Danny\Desktop\Computer Science\Personal Projects\student-grades-dotnet\bin\Debug\net10.0\Bogus.dll
