@@ -20,6 +20,12 @@ namespace StudentGradesDotnet.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+        modelBuilder.Entity<Student>()
+            .ToTable("students");
+
+        modelBuilder.Entity<Grade>()
+            .ToTable("grades");
+
         modelBuilder.Entity<Grade>()
             .HasKey(g => new { g.Student_Id, g.Course_Id });
 

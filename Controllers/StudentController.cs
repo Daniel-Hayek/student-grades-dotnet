@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StudentGradesDotnet.Data;
-using student_grades_dotnet.Models;
+using StudentGradesDotnet.Models;
 
 namespace StudentGradesDotnet.Controllers
 {
@@ -22,7 +22,7 @@ namespace StudentGradesDotnet.Controllers
         // GET: Student
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Student.ToListAsync());
+            return View(await _context.Students.ToListAsync());
         }
 
         // GET: Student/Details/5
@@ -33,7 +33,7 @@ namespace StudentGradesDotnet.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Student
+            var student = await _context.Students
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (student == null)
             {
@@ -73,7 +73,7 @@ namespace StudentGradesDotnet.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Student.FindAsync(id);
+            var student = await _context.Students.FindAsync(id);
             if (student == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace StudentGradesDotnet.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Student
+            var student = await _context.Students
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (student == null)
             {
@@ -139,10 +139,10 @@ namespace StudentGradesDotnet.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var student = await _context.Student.FindAsync(id);
+            var student = await _context.Students.FindAsync(id);
             if (student != null)
             {
-                _context.Student.Remove(student);
+                _context.Students.Remove(student);
             }
 
             await _context.SaveChangesAsync();
@@ -151,7 +151,7 @@ namespace StudentGradesDotnet.Controllers
 
         private bool StudentExists(int id)
         {
-            return _context.Student.Any(e => e.Id == id);
+            return _context.Students.Any(e => e.Id == id);
         }
     }
 }
