@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using student_grades_dotnet.Models;
+using StudentGradesDotnet.Models;
 
 namespace StudentGradesDotnet.Data
 {
@@ -12,8 +12,21 @@ namespace StudentGradesDotnet.Data
         public StudentGradesContext (DbContextOptions<StudentGradesContext> options)
             : base(options)
         {
+            
         }
 
-        public DbSet<student_grades_dotnet.Models.Student> Student { get; set; } = default!;
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Grade> Grades { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+        modelBuilder.Entity<Grade>()
+            .HasKey(g => new { g.Student_Id, g.Course_Id });
+
+        modelBuilder.Entity<Grade>()
+            .HasOne(g => g.Student)
+            .WithMany(s => s.Grades)
+            .HasForeignKey(g => g.Student_Id);
+        }
     }
 }
