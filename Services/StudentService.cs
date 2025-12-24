@@ -1,6 +1,9 @@
+using Microsoft.EntityFrameworkCore;
 using StudentGradesDotnet.Data;
 using StudentGradesDotnet.Models;
 using StudentGradesDotnet.Services;
+
+namespace StudentGradesDotnet.Services;
 
 public class StudentService : IStudentService
 {
@@ -11,8 +14,8 @@ public class StudentService : IStudentService
         _context = context;
     }
 
-    public IEnumerable<Student> GetAllStudents()
+    public async Task<IEnumerable<Student>> GetAllStudents()
     {
-        return _context.Students.ToList();
+        return await _context.Students.ToListAsync();
     }
 }

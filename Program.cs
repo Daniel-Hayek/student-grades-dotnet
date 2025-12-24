@@ -1,12 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using StudentGradesDotnet.Data;
+using StudentGradesDotnet.Services;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<StudentGradesContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("StudentGradesContext") ?? throw new InvalidOperationException("Connection string 'StudentGradesContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Registering the service to program to be injectable into controller
+builder.Services.AddScoped<IStudentService, StudentService>();
 
 var app = builder.Build();
 
@@ -22,7 +26,9 @@ using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<StudentGradesContext>();
     DbSeeder.Seed(context);
+
 }
+
 
 app.UseHttpsRedirection();
 app.UseRouting();

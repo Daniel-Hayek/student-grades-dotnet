@@ -4,5 +4,5 @@ namespace StudentGradesDotnet.Services;
 
 public interface IStudentService
 {
-    IEnumerable<Student> GetAllStudents();
+    Task<IEnumerable<Student>> GetAllStudents();
 }
