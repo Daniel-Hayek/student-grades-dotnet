@@ -18,7 +18,11 @@ public class GradeService : IGradeService
     public async Task<IEnumerable<GradeDto>> GetCourseAverages()
     {
         return await _context.Grades
-            .Select(g => new GradeDto(g.Course_Name, g.GradeValue))
+            .GroupBy(g => g.Course_Name)
+            .Select(g => new GradeDto(
+                g.Key,
+                (int)Math.Round(g.Average(x => x.GradeValue))
+            ))
             .ToListAsync();
     }
 
