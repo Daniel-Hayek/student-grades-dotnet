@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const button = document.getElementById("getStudentData");
     const tableData = document.getElementById("tableData");
     const table = document.getElementById("table");
+    const dataDiv = document.getElementById("dataDiv");
     
     button.addEventListener("click", async () => {
         try {
@@ -32,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             
             table.style.display = "table";
+            dataDiv.style.display = "block"
         } catch (e) {
             alert(e.message);
         }

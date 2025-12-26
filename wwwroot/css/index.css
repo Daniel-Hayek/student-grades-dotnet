@@ -1,4 +1,8 @@
-table {
+.table {
     display: none;
-    border: 1;
+    border: 1px solid black;
+}
+
+.data-div {
+    display: none;
 }
