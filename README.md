@@ -10,6 +10,7 @@ Using dotnet run will show the page, with a button that will display course and 
 
 ### ERD ###
 
+```text
 +-----------------+           +----------------------+
 |    students     |           |        grades        |
 +-----------------+           +----------------------+
