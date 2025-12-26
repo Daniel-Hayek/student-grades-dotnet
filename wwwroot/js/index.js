@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const tableData = document.getElementById("tableData");
     const table = document.getElementById("table");
     const dataDiv = document.getElementById("dataDiv");
+    const exportButton = document.getElementById("exportData");
     
     button.addEventListener("click", async () => {
         try {
@@ -39,4 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
     })
+
+    exportButton.addEventListener("click", async () => {
+        const wb = XLSX.utils.table_to_book(table, { sheet: "Students" });
+
+        XLSX.writeFile(wb, "Students.xlsx");
+    })
+
 })
