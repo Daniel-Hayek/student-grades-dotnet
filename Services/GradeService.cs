@@ -15,6 +15,9 @@ public class GradeService : IGradeService
         _context = context;
     }
 
+
+    // Fetching the data from the database and using LINQ EF to aggregate
+    // directly from the query, avoiding extra backend computing
     public async Task<IEnumerable<GradeDto>> GetCourseAverages()
     {
         return await _context.Grades

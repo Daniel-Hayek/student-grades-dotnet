@@ -1,14 +1,22 @@
+//Ensuring that the DOM is fully loaded before anything else happens
+
 document.addEventListener("DOMContentLoaded", () => {
+
+  //Getting the various elements from the document to be used and manipulated
   const button = document.getElementById("getStudentData");
   const tableData = document.getElementById("tableData");
   const table = document.getElementById("table");
   const dataDiv = document.getElementById("dataDiv");
   const exportButton = document.getElementById("exportData");
 
+  //Lists to be used to store course names and averages
   const courseNames = [];
   const courseAverages = [];
 
+  //Button that calls the API to retrieve data from backend
   button.addEventListener("click", async () => {
+
+    //Populating the grid view table with the student data
     try {
       tableData.innerHTML = "";
 
@@ -41,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
       alert(e.message);
     }
 
+    //Populating the chart with course average data
     try {
       const res = await axios.get("/course-averages");
 
@@ -80,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  //Button related to exporting student data to xlsx file
   exportButton.addEventListener("click", async () => {
     const wb = XLSX.utils.table_to_book(table, { sheet: "Students" });
 

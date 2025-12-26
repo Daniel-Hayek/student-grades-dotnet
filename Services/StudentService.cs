@@ -29,6 +29,8 @@ public class StudentService : IStudentService
             .ToListAsync();
     }
 
+    // Fetching the data from the database and using LINQ EF to aggregate
+    // directly from the query, avoiding extra backend computing
     public async Task<IEnumerable<StudentAverageDto>> StudentAverages()
     {
 

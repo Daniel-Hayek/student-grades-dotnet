@@ -17,6 +17,7 @@ public static class DbSeeder
         if (context.Students.Any())
             return;
 
+        // Generating student names
         var studentFaker = new Faker<Student>()
             .RuleFor(s => s.Name, f => f.Name.FullName());
 
@@ -25,6 +26,7 @@ public static class DbSeeder
         context.Students.AddRange(students);
         context.SaveChanges();
 
+        // Manually adding courses
         var courses = new[]
         {
             new { Id = 1, Name = "Math" },
@@ -34,6 +36,7 @@ public static class DbSeeder
             new { Id = 5, Name = "English" }
         };
 
+        // Adding grades to students once the students and courses exist
         var grades = new List<Grade>();
 
         foreach (var student in students)

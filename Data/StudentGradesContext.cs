@@ -18,6 +18,7 @@ namespace StudentGradesDotnet.Data
         public DbSet<Student> Students { get; set; }
         public DbSet<Grade> Grades { get; set; }
 
+        // Creating tables and in database and adding relations and constraints
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         modelBuilder.Entity<Student>()

@@ -10,15 +10,20 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    @* This is the script used on this page for the buttons and API calls, found in wwwroot/js/index.js *@
     <script src="~/js/index.js" defer></script>
 }
 
+@* This is the only view used in the project *@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <h3>Press the button to see course and student data</h3>
 
     <button id="getStudentData">Get Data</button>
 
+
+    @* Conditional display of course/student data only after button is pressed *@
 
     <div class="data-div" id="dataDiv">
 

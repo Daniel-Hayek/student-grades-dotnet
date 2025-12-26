@@ -13,6 +13,7 @@ namespace StudentGradesDotnet.Controllers
 {
     public class StudentController : Controller
     {
+        //Initializing instance of Student Service to call relevant service layer logic
         private readonly IStudentService _studentService;
 
         public StudentController(IStudentService studentService)
@@ -22,7 +23,8 @@ namespace StudentGradesDotnet.Controllers
 
 
         // GET: students
-        // This was an endpoint created for testing
+        // This was an endpoint created for testing, and it also provides ALL relevant data
+        // Should project specifications indicate that the data should be aggregated elsewhere
         [HttpGet]
         [Route("/students")]
         public async Task<IActionResult> GetAllStudents()

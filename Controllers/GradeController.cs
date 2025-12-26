@@ -13,6 +13,8 @@ namespace StudentGradesDotnet.Controllers
 {
     public class GradeController : Controller
     {
+
+        //Initializing instance of Grade Service to call relevant service layer logic
         private readonly IGradeService _gradeService;
 
         public GradeController(IGradeService gradeService)

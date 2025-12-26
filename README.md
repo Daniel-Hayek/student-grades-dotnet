@@ -13,7 +13,7 @@ Using `dotnet run` will show the page, with a button that will display course an
 ### Prerequisites
 
 - .NET 10 SDK
-- SQL Server Express
+- SQL Server Express (Running instance needs to be called SQLEXPRESS, or alternatively changed in the project appsettings.json file to match running instance)
 - (Optional) Visual Studio 2022 or VS Code
 
 ### Setup
