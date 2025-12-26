@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const dataDiv = document.getElementById("dataDiv");
   const exportButton = document.getElementById("exportData");
 
-  const studentNames = [];
-  const studentGrades = [];
+  const courseNames = [];
+  const courseAverages = [];
 
   button.addEventListener("click", async () => {
     try {
@@ -25,11 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const name = document.createElement("td");
         name.textContent = student.name;
-        studentNames.push(student.name);
 
         const average = document.createElement("td");
         average.textContent = student.gradeAverage;
-        studentGrades.push(student.gradeAverage);
 
         row.appendChild(name);
         row.appendChild(average);
@@ -42,33 +40,46 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (e) {
       alert(e.message);
     }
+
+    try {
+      const res = await axios.get("/course-averages");
+
+      const courseGrades = res.data;
+
+      courseGrades.forEach(course => {
+        courseNames.push(course.course_Name);
+        courseAverages.push(course.gradeValue);
+      })
+
+      chartCanvas = new Chart("gradesChart", {
+        type: "bar",
+        data: {
+          labels: courseNames,
+          datasets: [
+            {
+              label: "Average Grade",
+              data: courseAverages,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100,
+            },
+          },
+        },
+      });
+    } catch (e) {
+      alert(e.message);
+    }
   });
 
   exportButton.addEventListener("click", async () => {
     const wb = XLSX.utils.table_to_book(table, { sheet: "Students" });
 
     XLSX.writeFile(wb, "Students.xlsx");
-  });
-
-  chartCanvas = new Chart("gradesChart", {
-    type: "bar",
-    data: {
-      labels: studentNames,
-      datasets: [
-        {
-          label: "Average Grade",
-          data: studentGrades,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true,
-          max: 100,
-        },
-      },
-    },
   });
 });
