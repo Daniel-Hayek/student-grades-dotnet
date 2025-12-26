@@ -2,11 +2,13 @@
     ViewData["Title"] = "Home Page";
 }
 
+<link rel="stylesheet" href="~/css/index.css" />
+
 
 @section Scripts {
     @* Importing Axios through a CDN to avoid external installs *@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="~/js/index.js"></script>
+    <script src="~/js/index.js" defer></script>
 }
 
 <div class="text-center">
@@ -14,4 +16,16 @@
     <h3>Press the button to see all students with their averages</h3>
 
     <button id="getStudentData">Get Data</button>
+
+    <table class="table" id="table">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Average Grade</th>
+            </tr>
+        </thead>
+        <tbody id="tableData">
+            
+        </tbody>
+    </table>
 </div>
