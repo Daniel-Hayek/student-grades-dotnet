@@ -11,6 +11,7 @@ builder.Services.AddControllersWithViews();
 
 // Registering the service to program to be injectable into controller
 builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<IGradeService, GradeService>();
 
 var app = builder.Build();
 

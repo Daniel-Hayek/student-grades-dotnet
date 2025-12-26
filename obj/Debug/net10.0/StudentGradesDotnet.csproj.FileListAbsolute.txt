@@ -418,5 +418,6 @@ C:\Users\Danny\Desktop\Computer Science\Personal Projects\student-grades-dotnet\
 C:\Users\Danny\Desktop\Computer Science\Personal Projects\student-grades-dotnet\obj\Debug\net10.0\StudentGradesDotnet.genruntimeconfig.cache
 C:\Users\Danny\Desktop\Computer Science\Personal Projects\student-grades-dotnet\obj\Debug\net10.0\ref\StudentGradesDotnet.dll
 C:\Users\Danny\Desktop\Computer Science\Personal Projects\student-grades-dotnet\bin\Debug\net10.0\Bogus.dll
-C:\Users\Danny\Desktop\Computer Science\Personal Projects\student-grades-dotnet\obj\Debug\net10.0\compressed\pkq68gdhne-{0}-somqzytagu-somqzytagu.gz
 C:\Users\Danny\Desktop\Computer Science\Personal Projects\student-grades-dotnet\obj\Debug\net10.0\compressed\xlyfdrgwuq-{0}-b3evy44epu-b3evy44epu.gz
+C:\Users\Danny\Desktop\Computer Science\Personal Projects\student-grades-dotnet\obj\Debug\net10.0\compressed\suf4awdgp3-{0}-nui9qbv7ui-nui9qbv7ui.gz
+C:\Users\Danny\Desktop\Computer Science\Personal Projects\student-grades-dotnet\obj\Debug\net10.0\compressed\pkq68gdhne-{0}-wqffxbqb2x-wqffxbqb2x.gz

@@ -13,11 +13,20 @@ namespace StudentGradesDotnet.Controllers
 {
     public class GradeController : Controller
     {
-        private readonly IStudentService _studentService;
+        private readonly IGradeService _gradeService;
 
-        public GradeController(IStudentService studentService)
+        public GradeController(IGradeService gradeService)
         {
-            _studentService = studentService;
+            _gradeService = gradeService;
+        }
+
+        // GET: course-averages
+        // This endpoint returns the courses and their averages
+        [HttpGet]
+        [Route("/course-averages")]
+        public async Task<IActionResult> GetCourseAverages()
+        {
+            return Ok(await _gradeService.GetCourseAverages());
         }
 
     }

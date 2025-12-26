@@ -15,9 +15,11 @@ public class GradeService : IGradeService
         _context = context;
     }
 
-    public async Task<IEnumerable<Grade>> GetCourseAverages()
+    public async Task<IEnumerable<GradeDto>> GetCourseAverages()
     {
-        return await _context.Grades.ToListAsync();
+        return await _context.Grades
+            .Select(g => new GradeDto(g.Course_Name, g.GradeValue))
+            .ToListAsync();
     }
 
 }
