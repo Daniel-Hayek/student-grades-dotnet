@@ -29,8 +29,14 @@ public class StudentService : IStudentService
             .ToListAsync();
     }
 
-    public async Task<IEnumerable<Student>> StudentAverages()
+    public async Task<IEnumerable<StudentAverageDto>> StudentAverages()
     {
-        return await _context.Students.ToListAsync();
+
+        return await _context.Students
+            .Select(s => new StudentAverageDto(
+                s.Name,
+                s.Grades.Average(g => g.GradeValue)
+            ))
+            .ToListAsync();
     }
 }

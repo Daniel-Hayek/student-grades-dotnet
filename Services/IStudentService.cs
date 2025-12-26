@@ -6,5 +6,5 @@ namespace StudentGradesDotnet.Services;
 public interface IStudentService
 {
     Task<IEnumerable<StudentDto>> GetAllStudents();
-    Task<IEnumerable<Student>> StudentAverages();
+    Task<IEnumerable<StudentAverageDto>> StudentAverages();
 }
