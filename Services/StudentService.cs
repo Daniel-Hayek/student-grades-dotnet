@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using StudentGradesDotnet.Data;
+using StudentGradesDotnet.DTOs;
 using StudentGradesDotnet.Models;
 using StudentGradesDotnet.Services;
 
@@ -14,9 +15,18 @@ public class StudentService : IStudentService
         _context = context;
     }
 
-    public async Task<IEnumerable<Student>> GetAllStudents()
+    public async Task<IEnumerable<StudentDto>> GetAllStudents()
     {
-        return await _context.Students.Include(s => s.Grades).ToListAsync();
+        return await _context.Students
+            .Include(s => s.Grades)
+            .Select(s => new StudentDto(
+                s.Id,
+                s.Name,
+                s.Grades
+                    .Select(g => new GradeDto(g.Course_Name, g.GradeValue))
+                    .ToList()
+            ))
+            .ToListAsync();
     }
 
     public async Task<IEnumerable<Student>> StudentAverages()

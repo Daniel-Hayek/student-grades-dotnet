@@ -1,9 +1,10 @@
+using StudentGradesDotnet.DTOs;
 using StudentGradesDotnet.Models;
 
 namespace StudentGradesDotnet.Services;
 
 public interface IStudentService
 {
-    Task<IEnumerable<Student>> GetAllStudents();
+    Task<IEnumerable<StudentDto>> GetAllStudents();
     Task<IEnumerable<Student>> StudentAverages();
 }
