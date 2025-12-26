@@ -6,3 +6,9 @@
 .data-div {
     display: none;
 }
+
+.data-section-display {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
