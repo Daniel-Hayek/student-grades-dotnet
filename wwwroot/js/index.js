@@ -46,10 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const courseGrades = res.data;
 
-      courseGrades.forEach(course => {
+      courseGrades.forEach((course) => {
         courseNames.push(course.course_Name);
         courseAverages.push(course.gradeValue);
-      })
+      });
 
       chartCanvas = new Chart("gradesChart", {
         type: "bar",
@@ -59,6 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
             {
               label: "Average Grade",
               data: courseAverages,
+              backgroundColor: "rgba(0, 51, 102, 0.8)",
+              borderColor: "rgba(0, 51, 102, 1)",
+              borderWidth: 1,
             },
           ],
         },
