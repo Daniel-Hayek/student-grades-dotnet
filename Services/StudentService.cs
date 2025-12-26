@@ -33,6 +33,7 @@ public class StudentService : IStudentService
     {
 
         return await _context.Students
+            .OrderBy(s => s.Name)
             .Select(s => new StudentAverageDto(
                 s.Name,
                 s.Grades.Average(g => g.GradeValue)

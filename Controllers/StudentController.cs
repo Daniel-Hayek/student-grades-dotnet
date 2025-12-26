@@ -30,7 +30,14 @@ namespace StudentGradesDotnet.Controllers
             return Ok(await _studentService.GetAllStudents());
         }
 
-        
+        // GET: Student
+        // This was an endpoint created for testing
+        [HttpGet]
+        [Route("/student-averages")]
+        public async Task<IActionResult> GetStudentsWithAverages()
+        {
+            return Ok(await _studentService.StudentAverages());
+        }
 
     }
 }
