@@ -1,7 +1,6 @@
 //Ensuring that the DOM is fully loaded before anything else happens
 
 document.addEventListener("DOMContentLoaded", () => {
-
   //Getting the various elements from the document to be used and manipulated
   const button = document.getElementById("getStudentData");
   const tableData = document.getElementById("tableData");
@@ -9,13 +8,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const dataDiv = document.getElementById("dataDiv");
   const exportButton = document.getElementById("exportData");
 
+  $(function () {
+    $("#buttonContainer").dxButton({
+      text: "Click me!",
+      onClick: function () {
+        alert("Hello World!");
+      },
+    });
+  });
+
+  // ---------------------------------------------------------------------------------------------------------
+  // Initial Project Specs (Leaving it as is for reference and functionality)
+
   //Lists to be used to store course names and averages
   const courseNames = [];
   const courseAverages = [];
 
   //Button that calls the API to retrieve data from backend
   button.addEventListener("click", async () => {
-
     //Populating the grid view table with the student data
     try {
       tableData.innerHTML = "";
