@@ -2,7 +2,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   //Getting the various elements from the document to be used and manipulated
-  const tableData = document.getElementById("tableData");
   const table = document.getElementById("table");
   const dataDiv = document.getElementById("dataDiv");
 
@@ -39,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const courseNames = [];
   const courseAverages = [];
 
-  
   //Function related to exporting student data to xlsx file
   async function exportData() {
     const wb = XLSX.utils.table_to_book(table, { sheet: "Students" });
@@ -52,8 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     DevExpress.ui.notify("Fetching data...");
 
     try {
-      tableData.innerHTML = "";
-
+      //Fetching and testing student data
       const res = await axios.get("/student-averages");
 
       console.log(res);
@@ -62,22 +59,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.log(students);
 
-      students.forEach((student) => {
-        const row = document.createElement("tr");
-
-        const name = document.createElement("td");
-        name.textContent = student.name;
-
-        const average = document.createElement("td");
-        average.textContent = student.gradeAverage;
-
-        row.appendChild(name);
-        row.appendChild(average);
-
-        tableData.appendChild(row);
+      //Rendering dxDataGrid
+      $(function () {
+        $("#studentDataDiv").dxDataGrid({
+          dataSource: students,
+          keyExpr: "name",
+          paging: {
+            pageSize: 10,
+          },
+        });
       });
 
-      table.style.display = "table";
       dataDiv.style.display = "block";
     } catch (e) {
       DevExpress.ui.notify(e.message);
