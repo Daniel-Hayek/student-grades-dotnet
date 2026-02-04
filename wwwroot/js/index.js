@@ -62,11 +62,22 @@ document.addEventListener("DOMContentLoaded", () => {
       //Rendering dxDataGrid
       $(function () {
         $("#studentDataDiv").dxDataGrid({
+          height: 480,
           dataSource: students,
           keyExpr: "name",
           paging: {
             pageSize: 10,
           },
+          selection: {
+            mode: 'single',
+          },
+          showBorders: true,
+          rowAlternationEnabled: true,
+          searchPanel: {
+            visible: true,
+            width: 240,
+            placeholder: 'Search...'
+          }
         });
       });
 
