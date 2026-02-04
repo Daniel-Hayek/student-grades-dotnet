@@ -2,7 +2,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   //Getting the various elements from the document to be used and manipulated
-  const table = document.getElementById("table");
   const dataDiv = document.getElementById("dataDiv");
 
   // DevExtreme Buttons
@@ -38,13 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const courseNames = [];
   const courseAverages = [];
 
-  //Function related to exporting student data to xlsx file
-  async function exportData() {
-    const wb = XLSX.utils.table_to_book(table, { sheet: "Students" });
-
-    XLSX.writeFile(wb, "Students.xlsx");
-  }
-
   //Function to fetch and display data when button is clicked
   async function getData() {
     DevExpress.ui.notify("Fetching data...");
@@ -77,7 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const buffer = await workbook.xlsx.writeBuffer();
 
-            saveAs(new Blob([buffer], { type: "application/octet-stream" }));
+            saveAs(
+              new Blob([buffer], { type: "application/octet-stream" }),
+              "StudentData.xlsx",
+            );
           },
           height: 480,
           dataSource: students,
@@ -105,15 +100,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //Populating the chart with course average data
     try {
+      //Getting course data
       const res = await axios.get("/course-averages");
 
       const courseGrades = res.data;
+      const courseData = {};
 
       courseGrades.forEach((course) => {
         courseNames.push(course.course_Name);
         courseAverages.push(course.gradeValue);
       });
 
+      //dxChart
+      $(function () {
+        $("#chartContainer").dxChart({
+          dataSource: courseGrades,
+          series: [
+            {
+              type: "bar",
+              argumentField: "course_Name",
+              valueField: "gradeValue",
+              name: "Course Averages",
+              color: "#b98356",
+            },
+          ],
+        });
+      });
+
+      //Old chart
       chartCanvas = new Chart("gradesChart", {
         type: "bar",
         data: {
