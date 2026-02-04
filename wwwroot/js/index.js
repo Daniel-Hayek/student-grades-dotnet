@@ -2,7 +2,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   //Getting the various elements from the document to be used and manipulated
-  const button = document.getElementById("getStudentData");
   const tableData = document.getElementById("tableData");
   const table = document.getElementById("table");
   const dataDiv = document.getElementById("dataDiv");
@@ -31,6 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //Function to fetch and display data when button is clicked
   async function getData() {
+    DevExpress.ui.notify("Fetching data...");
+
     try {
       tableData.innerHTML = "";
   
@@ -60,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       table.style.display = "table";
       dataDiv.style.display = "block";
     } catch (e) {
-      alert(e.message);
+      DevExpress.ui.notify(e.message);
     }
   
     //Populating the chart with course average data
@@ -99,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       });
     } catch (e) {
-      alert(e.message);
+      DevExpress.ui.notify(e.message);
     }
   }
 });
