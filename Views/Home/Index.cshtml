@@ -10,13 +10,22 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+ 
+    <!-- DevExtreme theme -->
+    <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/25.2.4/css/dx.light.css">
+ 
+    <!-- DevExtreme library -->
+    <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/25.2.4/js/dx.all.js"></script>
 
     @* This is the script used on this page for the buttons and API calls, found in wwwroot/js/index.js *@
     <script src="~/js/index.js" defer></script>
 }
 
 @* This is the only view used in the project *@
-<div class="text-center">
+<div class="text-center dx-viewport">
     <h1 class="display-4">Welcome</h1>
     <h3>Press the button to see course and student data</h3>
 
