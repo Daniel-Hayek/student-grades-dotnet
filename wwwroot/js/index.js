@@ -68,8 +68,11 @@ document.addEventListener("DOMContentLoaded", () => {
       text: "Enter Data",
       onClick: (e) => {
         const num = $("#numberBoxContainer").dxNumberBox("instance").option("value");
+        const text = $("#textBoxContainer").dxTextBox("instance").option("value");
+        const tag = $("#tagBoxContainer").dxTagBox("instance").option("value");
+        const select = $("#selectBoxContainer").dxSelectBox("instance").option("value");
 
-        DevExpress.ui.notify(num);
+        DevExpress.ui.notify(num + text + tag + select);
         
         e.component.option("disabled", true);
 
