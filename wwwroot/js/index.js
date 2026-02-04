@@ -1,7 +1,7 @@
-//Ensuring that the DOM is fully loaded before anything else happens
+// Ensuring that the DOM is fully loaded before anything else happens
 
 document.addEventListener("DOMContentLoaded", () => {
-  //Getting the various elements from the document to be used and manipulated
+  // Getting the various elements from the document to be used and manipulated
   const dataDiv = document.getElementById("dataDiv");
 
   // DevExtreme Buttons
@@ -19,30 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  $(function () {
-    $("#exportButtonContainer").dxButton({
-      text: "Export Student Data",
-      onClick: exportData,
-      type: "normal",
-      stylingMode: "outlined",
-      width: "200",
-      icon: "save",
-    });
-  });
-
   // ---------------------------------------------------------------------------------------------------------
-  // Function being used in buttons
+  // Functions being used in buttons
 
-  //Lists to be used to store course names and averages
-  const courseNames = [];
-  const courseAverages = [];
-
-  //Function to fetch and display data when button is clicked
+  // Function to fetch and display data when button is clicked
   async function getData() {
     DevExpress.ui.notify("Fetching data...");
 
     try {
-      //Fetching and testing student data
+      // Fetching and testing student data
       const res = await axios.get("/student-averages");
 
       console.log(res);
@@ -51,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.log(students);
 
-      //Rendering dxDataGrid
+      // Rendering dxDataGrid
       $(function () {
         $("#studentDataDiv").dxDataGrid({
           export: {
@@ -59,20 +44,26 @@ document.addEventListener("DOMContentLoaded", () => {
             formats: ["xlsx"],
           },
           onExporting: async (e) => {
-            const workbook = new ExcelJS.Workbook();
-            const worksheet = workbook.addWorksheet("Main sheet");
+            try {
+              DevExpress.ui.notify("Exporting student data...");
 
-            await DevExpress.excelExporter.exportDataGrid({
-              worksheet: worksheet,
-              component: e.component,
-            });
+              const workbook = new ExcelJS.Workbook();
+              const worksheet = workbook.addWorksheet("Main sheet");
 
-            const buffer = await workbook.xlsx.writeBuffer();
+              await DevExpress.excelExporter.exportDataGrid({
+                worksheet: worksheet,
+                component: e.component,
+              });
 
-            saveAs(
-              new Blob([buffer], { type: "application/octet-stream" }),
-              "StudentData.xlsx",
-            );
+              const buffer = await workbook.xlsx.writeBuffer();
+
+              saveAs(
+                new Blob([buffer], { type: "application/octet-stream" }),
+                "StudentData.xlsx",
+              );
+            } catch (e) {
+              DevExpress.ui.notify(e.message);
+            }
           },
           height: 480,
           dataSource: students,
@@ -98,20 +89,14 @@ document.addEventListener("DOMContentLoaded", () => {
       DevExpress.ui.notify(e.message);
     }
 
-    //Populating the chart with course average data
+    // Creating chart
     try {
-      //Getting course data
+      // Getting course data
       const res = await axios.get("/course-averages");
 
       const courseGrades = res.data;
-      const courseData = {};
 
-      courseGrades.forEach((course) => {
-        courseNames.push(course.course_Name);
-        courseAverages.push(course.gradeValue);
-      });
-
-      //dxChart
+      // dxChart
       $(function () {
         $("#chartContainer").dxChart({
           dataSource: courseGrades,
@@ -124,33 +109,28 @@ document.addEventListener("DOMContentLoaded", () => {
               color: "#b98356",
             },
           ],
-        });
-      });
-
-      //Old chart
-      chartCanvas = new Chart("gradesChart", {
-        type: "bar",
-        data: {
-          labels: courseNames,
-          datasets: [
-            {
-              label: "Average Grade",
-              data: courseAverages,
-              backgroundColor: "rgba(0, 51, 102, 0.8)",
-              borderColor: "rgba(0, 51, 102, 1)",
-              borderWidth: 1,
+          valueAxis: {
+            min: 0,
+            max: 100,
+            visualRange: {
+              startValue: 0,
+              endValue: 100,
             },
-          ],
-        },
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true,
-              max: 100,
-            },
+            tickInterval: 10,
+            constantLines: [
+              {
+                value: 60,
+                label: { text: "Passing" },
+              },
+            ],
           },
-        },
+          tooltip: {
+            enabled: true,
+          },
+          legend: {
+            visible: false,
+          },
+        });
       });
     } catch (e) {
       DevExpress.ui.notify(e.message);
