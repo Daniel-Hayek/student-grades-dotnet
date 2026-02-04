@@ -1,18 +1,33 @@
 .table {
-    display: none;
-    border: 1px solid black;
+  display: none;
+  border: 1px solid black;
 }
 
 .data-div {
-    display: none;
+  display: none;
 }
 
 .data-section-display {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .export-button {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.data-entry {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.data-entry-fields {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: 20px;
+  gap: 20px;
 }
