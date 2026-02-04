@@ -62,6 +62,23 @@ document.addEventListener("DOMContentLoaded", () => {
       //Rendering dxDataGrid
       $(function () {
         $("#studentDataDiv").dxDataGrid({
+          export: {
+            enabled: true,
+            formats: ["xlsx"],
+          },
+          onExporting: async (e) => {
+            const workbook = new ExcelJS.Workbook();
+            const worksheet = workbook.addWorksheet("Main sheet");
+
+            await DevExpress.excelExporter.exportDataGrid({
+              worksheet: worksheet,
+              component: e.component,
+            });
+
+            const buffer = await workbook.xlsx.writeBuffer();
+
+            saveAs(new Blob([buffer], { type: "application/octet-stream" }));
+          },
           height: 480,
           dataSource: students,
           keyExpr: "name",
@@ -69,15 +86,15 @@ document.addEventListener("DOMContentLoaded", () => {
             pageSize: 10,
           },
           selection: {
-            mode: 'single',
+            mode: "single",
           },
           showBorders: true,
           rowAlternationEnabled: true,
           searchPanel: {
             visible: true,
             width: 240,
-            placeholder: 'Search...'
-          }
+            placeholder: "Search...",
+          },
         });
       });
 
