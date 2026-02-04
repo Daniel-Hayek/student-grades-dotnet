@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const tableData = document.getElementById("tableData");
   const table = document.getElementById("table");
   const dataDiv = document.getElementById("dataDiv");
-  const exportButton = document.getElementById("exportData");
 
+  // DevExtreme Buttons
   $(function () {
     $("#buttonContainer").dxButton({
       text: "Get Data",
@@ -21,19 +21,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  $(function () {
+    $("#exportButtonContainer").dxButton({
+      text: "Export Student Data",
+      onClick: exportData,
+      type: "normal",
+      stylingMode: "outlined",
+      width: "200",
+      icon: "save",
+    });
+  });
+
   // ---------------------------------------------------------------------------------------------------------
-  // Initial Project Specs (Leaving it as is for reference and functionality)
+  // Function being used in buttons
 
   //Lists to be used to store course names and averages
   const courseNames = [];
   const courseAverages = [];
 
-  //Button related to exporting student data to xlsx file
-  exportButton.addEventListener("click", async () => {
+  
+  //Function related to exporting student data to xlsx file
+  async function exportData() {
     const wb = XLSX.utils.table_to_book(table, { sheet: "Students" });
 
     XLSX.writeFile(wb, "Students.xlsx");
-  });
+  }
 
   //Function to fetch and display data when button is clicked
   async function getData() {
