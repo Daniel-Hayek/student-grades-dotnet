@@ -11,9 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   $(function () {
     $("#buttonContainer").dxButton({
       text: "Click me!",
-      onClick: function () {
-        alert("Hello World!");
-      },
+      onClick: getData,
     });
   });
 
@@ -24,52 +22,58 @@ document.addEventListener("DOMContentLoaded", () => {
   const courseNames = [];
   const courseAverages = [];
 
-  //Button that calls the API to retrieve data from backend
-  button.addEventListener("click", async () => {
-    //Populating the grid view table with the student data
+  //Button related to exporting student data to xlsx file
+  exportButton.addEventListener("click", async () => {
+    const wb = XLSX.utils.table_to_book(table, { sheet: "Students" });
+
+    XLSX.writeFile(wb, "Students.xlsx");
+  });
+
+  //Function to fetch and display data when button is clicked
+  async function getData() {
     try {
       tableData.innerHTML = "";
-
+  
       const res = await axios.get("/student-averages");
-
+  
       console.log(res);
-
+  
       const students = res.data;
-
+  
       console.log(students);
-
+  
       students.forEach((student) => {
         const row = document.createElement("tr");
-
+  
         const name = document.createElement("td");
         name.textContent = student.name;
-
+  
         const average = document.createElement("td");
         average.textContent = student.gradeAverage;
-
+  
         row.appendChild(name);
         row.appendChild(average);
-
+  
         tableData.appendChild(row);
       });
-
+  
       table.style.display = "table";
       dataDiv.style.display = "block";
     } catch (e) {
       alert(e.message);
     }
-
+  
     //Populating the chart with course average data
     try {
       const res = await axios.get("/course-averages");
-
+  
       const courseGrades = res.data;
-
+  
       courseGrades.forEach((course) => {
         courseNames.push(course.course_Name);
         courseAverages.push(course.gradeValue);
       });
-
+  
       chartCanvas = new Chart("gradesChart", {
         type: "bar",
         data: {
@@ -97,12 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (e) {
       alert(e.message);
     }
-  });
-
-  //Button related to exporting student data to xlsx file
-  exportButton.addEventListener("click", async () => {
-    const wb = XLSX.utils.table_to_book(table, { sheet: "Students" });
-
-    XLSX.writeFile(wb, "Students.xlsx");
-  });
+  }
 });
+
