@@ -4,7 +4,42 @@ document.addEventListener("DOMContentLoaded", () => {
   // Getting the various elements from the document to be used and manipulated
   const dataDiv = document.getElementById("dataDiv");
 
-  // DevExtreme Buttons
+  // Data for selectBox
+  const genderData = ["Male", "Female", "Other", "Prefer not to specify"];
+
+  // Number Box
+  $(function () {
+    $("#numberBoxContainer").dxNumberBox({
+      value: 13,
+      min: 0,
+      max: 100,
+      showSpinButtons: true,
+      label: "What is your favorite number?",
+      labelMode: "floating",
+      width: 300,
+    });
+  });
+
+  // Text Box
+  $(function () {
+    $("#textBoxContainer").dxTextBox({
+      label: "What is your name?",
+      labelMode: "floating",
+      width: 300,
+      showClearButton: true,
+    });
+  });
+
+  $(function () {
+    $("#selectBoxContainer").dxSelectBox({
+      dataSource: genderData,
+      label: "What is your gender?",
+      labelMode: "floating",
+      width: 300,
+    });
+  });
+
+  // DevExtreme Button
   $(function () {
     $("#buttonContainer").dxButton({
       text: "Get Data",
