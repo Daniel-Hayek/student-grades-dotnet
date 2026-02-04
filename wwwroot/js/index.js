@@ -63,17 +63,50 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Button to handle data in boxes
   $(function () {
     $("#dataEntryButton").dxButton({
       text: "Enter Data",
       onClick: (e) => {
-        const num = $("#numberBoxContainer").dxNumberBox("instance").option("value");
-        const text = $("#textBoxContainer").dxTextBox("instance").option("value");
+        const num = $("#numberBoxContainer")
+          .dxNumberBox("instance")
+          .option("value");
+        const text = $("#textBoxContainer")
+          .dxTextBox("instance")
+          .option("value");
         const tag = $("#tagBoxContainer").dxTagBox("instance").option("value");
-        const select = $("#selectBoxContainer").dxSelectBox("instance").option("value");
+        const select = $("#selectBoxContainer")
+          .dxSelectBox("instance")
+          .option("value");
 
-        DevExpress.ui.notify(num + text + tag + select);
-        
+        const popup = $("#dataPopup")
+          .dxPopup({
+            contentTemplate: () => {
+              const content = $("<div />");
+
+              content.append(
+                $("<p />").text(`Your name: ${text || "No name given"}`),
+                $("<p />").text(
+                  `Your favorite number: ${num ?? "None selected"}`,
+                ),
+                $("<p />").text(`Your gender: ${select ?? "None selected"}`),
+                $("<p />").text(
+                  `Your workdays: ${tag.length != 0 ? tag : "None selected"}`,
+                ),
+              );
+
+              return content;
+            },
+            hideOnOutsideClick: true,
+            width: 400,
+            height: 400,
+            resizeEnabled: true,
+            title: "Your Data",
+          })
+          .dxPopup("instance");
+
+        popup.show();
+
         e.component.option("disabled", true);
 
         setTimeout(() => {
