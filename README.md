@@ -8,7 +8,13 @@ The frontend and backend are both part of the repository, and the database is bu
 
 Upon building the project using `dotnet build`, provided the database connection is correctly established, the build will create a database called **StudentGradesDB** and populate it with 50 students and 5 grades for each at random.
 
-Using `dotnet run` will show the page, with a button that will display course and student data.
+Using `dotnet run` will show the page.
+
+This project is also used to practice DevExtreme JQuery.
+
+The main page is split into two parts:
+- Basic data entry practice for DevExtreme
+- A button that fetches and shows information on students and courses
 
 ### Prerequisites
 

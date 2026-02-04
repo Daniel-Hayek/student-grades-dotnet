@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Number Box
   $(function () {
     $("#numberBoxContainer").dxNumberBox({
-      value: 13,
       min: 0,
       max: 100,
       showSpinButtons: true,
