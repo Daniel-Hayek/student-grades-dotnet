@@ -7,6 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Data for selectBox
   const genderData = ["Male", "Female", "Other", "Prefer not to specify"];
 
+  // Data for tagBox
+  const dayData = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
   // Number Box
   $(function () {
     $("#numberBoxContainer").dxNumberBox({
@@ -30,12 +41,46 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Select Box
   $(function () {
     $("#selectBoxContainer").dxSelectBox({
       dataSource: genderData,
       label: "What is your gender?",
       labelMode: "floating",
       width: 300,
+    });
+  });
+
+  // Tag Box
+  $(function () {
+    $("#tagBoxContainer").dxTagBox({
+      dataSource: dayData,
+      label: "On which days do you work?",
+      labelMode: "floating",
+      width: 300,
+      multiline: true,
+      showSelectionControls: true,
+    });
+  });
+
+  $(function () {
+    $("#dataEntryButton").dxButton({
+      text: "Enter Data",
+      onClick: (e) => {
+        const num = $("#numberBoxContainer").dxNumberBox("instance").option("value");
+
+        DevExpress.ui.notify(num);
+        
+        e.component.option("disabled", true);
+
+        setTimeout(() => {
+          e.component.option("disabled", false);
+        }, 2000);
+      },
+      type: "normal",
+      stylingMode: "contained",
+      width: "240",
+      icon: "add",
     });
   });
 
