@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StudentGradesDotnet.Data;
+using StudentGradesDotnet.DTOs;
 using StudentGradesDotnet.Models;
 using StudentGradesDotnet.Services;
 
@@ -39,6 +40,15 @@ namespace StudentGradesDotnet.Controllers
         public async Task<IActionResult> GetStudentsWithAverages()
         {
             return Ok(await _studentService.StudentAverages());
+        }
+
+        // POST: add-student
+        // This endpoint is meant to be used to add a student
+        [HttpPost]
+        [Route("/add-student")]
+        public async Task<IActionResult> AddStudent(StudentDto student)
+        {
+            return Ok(await _studentService.AddStudent(student));
         }
 
     }

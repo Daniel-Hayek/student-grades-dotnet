@@ -42,4 +42,16 @@ public class StudentService : IStudentService
             ))
             .ToListAsync();
     }
+
+    public async Task<Student> AddStudent(StudentDto student)
+    {
+        var s = new Student();
+        s.Name = student.Name;
+
+        _context.Students.Add(s);
+
+        await _context.SaveChangesAsync();
+
+        return s;
+    }
 }
