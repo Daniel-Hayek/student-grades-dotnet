@@ -139,11 +139,11 @@ document.addEventListener("DOMContentLoaded", () => {
         $("#addStudentForm").dxForm({
             formData: {
                 name: "",
-                biology: 0,
-                chemistry: 0,
-                english: 0,
-                math: 0,
-                physics: 0,
+                Math: 0,
+                Physics: 0,
+                Chemistry: 0,
+                Biology: 0,
+                English: 0,
             },
             items: [{
                 dataField: "name",
@@ -160,7 +160,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 ]
             },
             {
-                dataField: "Biology",
+                dataField: "Math",
+                validationRules: [
+                    {
+                        type: "numeric",
+                        message: "Grade must be a number"
+                    },
+                    {
+                        type: "range",
+                        max: 100,
+                        min: 0,
+                        message: "Grade must be between 0 - 100"
+                    }
+                ]
+            },
+            {
+                dataField: "Physics",
                 validationRules: [
                     {
                         type: "numeric",
@@ -190,37 +205,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 ]
             },
             {
+                dataField: "Biology",
+                validationRules: [
+                    {
+                        type: "numeric",
+                        message: "Grade must be a number"
+                    },
+                    {
+                        type: "range",
+                        max: 100,
+                        min: 0,
+                        message: "Grade must be between 0 - 100"
+                    }
+                ]
+            },
+            {
                 dataField: "English",
-                validationRules: [
-                    {
-                        type: "numeric",
-                        message: "Grade must be a number"
-                    },
-                    {
-                        type: "range",
-                        max: 100,
-                        min: 0,
-                        message: "Grade must be between 0 - 100"
-                    }
-                ]
-            },
-            {
-                dataField: "Math",
-                validationRules: [
-                    {
-                        type: "numeric",
-                        message: "Grade must be a number"
-                    },
-                    {
-                        type: "range",
-                        max: 100,
-                        min: 0,
-                        message: "Grade must be between 0 - 100"
-                    }
-                ]
-            },
-            {
-                dataField: "Physics",
                 validationRules: [
                     {
                         type: "numeric",
@@ -256,6 +256,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (result.isValid) {
             console.log(form.option("formData"));
+
+
         } else {
             DevExpress.ui.notify("Invalid input");
         }
