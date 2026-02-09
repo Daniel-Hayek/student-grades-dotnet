@@ -43,7 +43,7 @@ public class StudentService : IStudentService
             .ToListAsync();
     }
 
-    public async Task<Student> AddStudent(StudentDto student)
+    public async Task<StudentDto> AddStudent(StudentDto student)
     {
         if (await _context.Students.AnyAsync(s => s.Name == student.Name))
         {
@@ -67,6 +67,8 @@ public class StudentService : IStudentService
 
         await _context.SaveChangesAsync();
 
-        return s;
+        var res = new StudentDto(student.Id, student.Name, student.Grades);
+
+        return student;
     }
 }

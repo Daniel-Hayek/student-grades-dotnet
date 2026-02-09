@@ -48,7 +48,8 @@ namespace StudentGradesDotnet.Controllers
         [Route("/add-student")]
         public async Task<IActionResult> AddStudent([FromBody] StudentDto student)
         {
-            return Ok(student);
+            //return Ok(student);
+
             try
             {
                 var newStudent = await _studentService.AddStudent(student);
