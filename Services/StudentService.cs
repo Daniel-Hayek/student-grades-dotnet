@@ -45,6 +45,11 @@ public class StudentService : IStudentService
 
     public async Task<Student> AddStudent(StudentDto student)
     {
+        if (await _context.Students.AnyAsync(s => s.Name == student.Name))
+        {
+            throw new InvalidOperationException("That name already exists");
+        }
+
         var s = new Student();
         s.Name = student.Name;
 
