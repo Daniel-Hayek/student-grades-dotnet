@@ -139,11 +139,11 @@ document.addEventListener("DOMContentLoaded", () => {
         $("#addStudentForm").dxForm({
             formData: {
                 name: "",
-                Math: 0,
-                Physics: 0,
-                Chemistry: 0,
-                Biology: 0,
-                English: 0,
+                Math: null,
+                Physics: null,
+                Chemistry: null,
+                Biology: null,
+                English: null,
             },
             items: [{
                 dataField: "name",
@@ -161,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             {
                 dataField: "Math",
+                editorType: "dxNumberBox",
                 validationRules: [
                     {
                         type: "numeric",
@@ -176,6 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             {
                 dataField: "Physics",
+                editorType: "dxNumberBox",
                 validationRules: [
                     {
                         type: "numeric",
@@ -191,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             {
                 dataField: "Chemistry",
+                editorType: "dxNumberBox",
                 validationRules: [
                     {
                         type: "numeric",
@@ -206,6 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             {
                 dataField: "Biology",
+                editorType: "dxNumberBox",
                 validationRules: [
                     {
                         type: "numeric",
@@ -221,6 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             {
                 dataField: "English",
+                editorType: "dxNumberBox",
                 validationRules: [
                     {
                         type: "numeric",
