@@ -296,7 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 DevExpress.ui.notify({ message: "Student list updated", type: "info", displayTime: 3000 });
                 DevExpress.ui.notify({ message: "Student added", type: "success", displayTime: 1500 });
             } catch (e) {
-                DevExpress.ui.notify("That student already exists!");
+                DevExpress.ui.notify("That student already exists!", "error");
             }
         } else {
             DevExpress.ui.notify("Invalid input", "error");
