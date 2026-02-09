@@ -52,6 +52,16 @@ public class StudentService : IStudentService
 
         var s = new Student();
         s.Name = student.Name;
+        s.Grades = new List<Grade>();
+
+        foreach (GradeDto g in student.Grades)
+        {
+            var temp = new Grade();
+            temp.Course_Name = g.Course_Name;
+            temp.GradeValue = g.GradeValue;
+
+            s.Grades.Add(temp);
+        }
 
         _context.Students.Add(s);
 
