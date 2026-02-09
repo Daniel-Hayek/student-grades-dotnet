@@ -23,6 +23,7 @@ public class GradeService : IGradeService
         return await _context.Grades
             .GroupBy(g => g.Course_Name)
             .Select(g => new GradeDto(
+                Course_Id: 0,
                 g.Key,
                 (int)Math.Round(g.Average(x => x.GradeValue))
             ))

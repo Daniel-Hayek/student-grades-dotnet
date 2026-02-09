@@ -23,7 +23,7 @@ public class StudentService : IStudentService
                 s.Id,
                 s.Name,
                 s.Grades
-                    .Select(g => new GradeDto(g.Course_Name, g.GradeValue))
+                    .Select(g => new GradeDto(g.Course_Id, g.Course_Name, g.GradeValue))
                     .ToList()
             ))
             .ToListAsync();
@@ -57,6 +57,7 @@ public class StudentService : IStudentService
         foreach (GradeDto g in student.Grades)
         {
             var temp = new Grade();
+            temp.Course_Id = g.Course_Id;
             temp.Course_Name = g.Course_Name;
             temp.GradeValue = g.GradeValue;
 

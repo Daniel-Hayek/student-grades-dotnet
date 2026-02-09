@@ -139,11 +139,11 @@ document.addEventListener("DOMContentLoaded", () => {
         $("#addStudentForm").dxForm({
             formData: {
                 name: "",
-                biologyGrade: 0,
-                chemistryGrade: 0,
-                englishGrade: 0,
-                mathGrade: 0,
-                physicsGrade: 0,
+                biology: 0,
+                chemistry: 0,
+                english: 0,
+                math: 0,
+                physics: 0,
             },
             items: [{
                 dataField: "name",
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ]
             },
             {
-                dataField: "Biology Grade",
+                dataField: "Biology",
                 validationRules: [
                     {
                         type: "numeric",
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ]
             },
             {
-                dataField: "Chemistry Grade",
+                dataField: "Chemistry",
                 validationRules: [
                     {
                         type: "numeric",
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ]
             },
             {
-                dataField: "English Grade",
+                dataField: "English",
                 validationRules: [
                     {
                         type: "numeric",
@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ]
             },
             {
-                dataField: "Math Grade",
+                dataField: "Math",
                 validationRules: [
                     {
                         type: "numeric",
@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ]
             },
             {
-                dataField: "Physics Grade",
+                dataField: "Physics",
                 validationRules: [
                     {
                         type: "numeric",
@@ -237,14 +237,30 @@ document.addEventListener("DOMContentLoaded", () => {
                 itemType: "button",
                 buttonOptions: {
                     text: "Add student",
-                }
-            }
+                    type: "success",
+                    onClick: addStudent,
+                },
+            },
             ]
         });
     });
 
     // ---------------------------------------------------------------------------------------------------------
     // Functions being used in buttons
+
+    // Function to add a new student with their grades
+    async function addStudent() {
+        const form = $("#addStudentForm").dxForm("instance");
+
+        const result = form.validate();
+
+        if (result.isValid) {
+            console.log(form.option("formData"));
+        } else {
+            DevExpress.ui.notify("Invalid input");
+        }
+    }
+
 
     // Function to fetch and display data when button is clicked
     async function getData() {

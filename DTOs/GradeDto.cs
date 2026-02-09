@@ -1,3 +1,3 @@
 namespace StudentGradesDotnet.DTOs;
 
-public record GradeDto(string Course_Name, int GradeValue);
+public record GradeDto(int Course_Id, string Course_Name, int GradeValue);
