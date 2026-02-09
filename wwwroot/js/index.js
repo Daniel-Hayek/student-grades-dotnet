@@ -285,8 +285,21 @@ document.addEventListener("DOMContentLoaded", () => {
             };
 
             console.log(payload);
+
+            try {
+                const res = await axios.post("/add-student", payload);
+
+                console.log(res);
+
+                getData();
+
+                DevExpress.ui.notify({ message: "Student list updated", type: "info", displayTime: 3000 });
+                DevExpress.ui.notify({ message: "Student added", type: "success", displayTime: 1500 });
+            } catch (e) {
+                DevExpress.ui.notify("That student already exists!");
+            }
         } else {
-            DevExpress.ui.notify("Invalid input");
+            DevExpress.ui.notify("Invalid input", "error");
         }
     }
 
