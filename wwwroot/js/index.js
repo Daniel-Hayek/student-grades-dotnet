@@ -260,9 +260,31 @@ document.addEventListener("DOMContentLoaded", () => {
         const result = form.validate();
 
         if (result.isValid) {
-            console.log(form.option("formData"));
+            const data = form.option("formData");
 
+            console.log(data);
 
+            const gradesToSend = [];
+            let course_Id = -1;
+
+            for (const key in data) {
+                course_Id++;
+                if (key != "name" && data[key] != null) {
+                    gradesToSend.push({
+                        course_Id: course_Id,
+                        course_Name: key,
+                        gradeValue: data[key],
+                    });
+                }
+
+            }
+
+            const payload = {
+                name: data.name,
+                grades: gradesToSend
+            };
+
+            console.log(payload);
         } else {
             DevExpress.ui.notify("Invalid input");
         }
