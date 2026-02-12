@@ -352,7 +352,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         const currentId = e.data["id"];
 
-                        window.open('/student-report');
+                        window.open(`/student-report?studentId=${currentId}`);
                     },
                     height: 480,
                     dataSource: students,

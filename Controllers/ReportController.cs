@@ -12,7 +12,7 @@ namespace StudentGradesDotnet.Controllers
 
         [HttpGet]
         [Route("/student-report")]
-        public IActionResult StudentReport(int? studentId)
+        public IActionResult StudentReport([FromQuery] int? studentId)
         {
             var report = new Report2();
 
@@ -27,9 +27,11 @@ namespace StudentGradesDotnet.Controllers
 
             report.Parameters["StudentID"].Visible = false;
 
+            var stream = new MemoryStream();
+            report.ExportToPdf(stream);
+            stream.Position = 0;
 
-            // return Content("hit controller");
-            return View(report);
+            return File(stream, "application/pdf");
         }
     }
 }
