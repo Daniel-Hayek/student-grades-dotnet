@@ -3,4 +3,15 @@
   <PropertyGroup>
     <ActiveDebugProfile>https</ActiveDebugProfile>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Reports\Report1.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\Report2.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\XtraReport2.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

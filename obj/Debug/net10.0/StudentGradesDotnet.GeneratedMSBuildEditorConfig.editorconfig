@@ -77,3 +77,15 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/Danny/Desktop/Computer Science/Personal Projects/student-grades-dotnet/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-2g8ai9z6i0
+
+[C:/Users/Danny/Desktop/Computer Science/Personal Projects/student-grades-dotnet/Reports/Report1.resx]
+build_metadata.AdditionalFiles.TargetPath = Reports\Report1.resx
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Danny/Desktop/Computer Science/Personal Projects/student-grades-dotnet/Reports/Report2.resx]
+build_metadata.AdditionalFiles.TargetPath = Reports\Report2.resx
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Danny/Desktop/Computer Science/Personal Projects/student-grades-dotnet/Reports/XtraReport2.resx]
+build_metadata.AdditionalFiles.TargetPath = Reports\XtraReport2.resx
+build_metadata.AdditionalFiles.CssScope = 
