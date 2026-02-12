@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="sqlDataSource2.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTIiPjxWaWV3IE5hbWU9ImdyYWRlcyI+PEZpZWxkIE5hbWU9ImdyYWRlc3N0dWRlbnRzIiBUeXBlPSJVbmtub3duIiAvPjxGaWVsZCBOYW1lPSJTdHVkZW50X0lkIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iQ291cnNlX0lkIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iQ291cnNlX05hbWUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iR3JhZGVWYWx1ZSIgVHlwZT0iSW50MzIiIC8+PC9WaWV3PjxWaWV3IE5hbWU9InN0dWRlbnRzIj48RmllbGQgTmFtZT0iSWQiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJOYW1lIiBUeXBlPSJTdHJpbmciIC8+PC9WaWV3PjxSZWxhdGlvbiBNYXN0ZXI9ImdyYWRlcyIgRGV0YWlsPSJzdHVkZW50cyI+PEtleUNvbHVtbiBNYXN0ZXI9IlN0dWRlbnRfSWQiIERldGFpbD0iSWQiIC8+PC9SZWxhdGlvbj48L0RhdGFTZXQ+</value>
+  </data>
 </root>
