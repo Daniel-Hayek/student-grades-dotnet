@@ -347,6 +347,12 @@ document.addEventListener("DOMContentLoaded", () => {
                             DevExpress.ui.notify(e.message);
                         }
                     },
+                    onRowClick: function (e) {
+                        DevExpress.ui.notify(e.key);
+                        console.log(e);
+
+
+                    },
                     height: 480,
                     dataSource: students,
                     keyExpr: "name",
