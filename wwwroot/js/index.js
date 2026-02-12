@@ -348,13 +348,25 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     },
                     onRowClick: function (e) {
-                        DevExpress.ui.notify(e.key);
-                        console.log(e);
-
+                        console.log(e.data["id"]);
 
                     },
                     height: 480,
                     dataSource: students,
+                    columns: [
+                        {
+                            dataField: "Id",
+                            visible: false
+                        },
+                        {
+                            dataField: "name",
+                            caption: "Student Name",
+                        },
+                        {
+                            dataField: "gradeAverage",
+                            caption: "Grade Average",
+                        },
+                    ],
                     keyExpr: "name",
                     paging: {
                         pageSize: 10,
