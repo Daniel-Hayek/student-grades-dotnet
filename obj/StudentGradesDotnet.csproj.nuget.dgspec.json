@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[35.6.5, )"
             },
+            "DevExpress.AspNetCore.Reporting": {
+              "target": "Package",
+              "version": "[25.2.4, )"
+            },
             "DevExpress.Reporting.Core": {
               "target": "Package",
               "version": "[25.2.4, )"

@@ -1,3 +1,5 @@
+using DevExpress.AspNetCore;
+using DevExpress.AspNetCore.Reporting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using StudentGradesDotnet.Data;
@@ -5,6 +7,7 @@ using StudentGradesDotnet.Services;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<StudentGradesContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("StudentGradesContext") ?? throw new InvalidOperationException("Connection string 'StudentGradesContext' not found.")));
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -31,12 +34,14 @@ using (var scope = app.Services.CreateScope())
 }
 
 
+
 app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseAuthorization();
 
 app.MapStaticAssets();
+
 
 app.MapControllerRoute(
     name: "default",

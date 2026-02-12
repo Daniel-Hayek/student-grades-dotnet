@@ -350,6 +350,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     onRowClick: function (e) {
                         console.log(e.data["id"]);
 
+                        const currentId = e.data["id"];
+
+                        window.open('/student-report');
                     },
                     height: 480,
                     dataSource: students,

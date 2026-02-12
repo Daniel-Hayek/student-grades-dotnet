@@ -10,7 +10,9 @@ namespace StudentGradesDotnet.Controllers
             return View();
         }
 
-        public IActionResult StudentGrades(int? studentId)
+        [HttpGet]
+        [Route("/student-report")]
+        public IActionResult StudentReport(int? studentId)
         {
             var report = new Report2();
 
@@ -25,6 +27,8 @@ namespace StudentGradesDotnet.Controllers
 
             report.Parameters["StudentID"].Visible = false;
 
+
+            // return Content("hit controller");
             return View(report);
         }
     }
