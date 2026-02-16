@@ -533,5 +533,6 @@
     <PkgDevExpress_Data Condition=" '$(PkgDevExpress_Data)' == '' ">C:\Program Files\DevExpress 25.2\Components\Offline Packages\devexpress.data\25.2.4</PkgDevExpress_Data>
     <PkgDevExpress_Xpo Condition=" '$(PkgDevExpress_Xpo)' == '' ">C:\Program Files\DevExpress 25.2\Components\Offline Packages\devexpress.xpo\25.2.4</PkgDevExpress_Xpo>
     <PkgDevExpress_DataAccess Condition=" '$(PkgDevExpress_DataAccess)' == '' ">C:\Program Files\DevExpress 25.2\Components\Offline Packages\devexpress.dataaccess\25.2.4</PkgDevExpress_DataAccess>
+    <PkgBuildBundlerMinifier Condition=" '$(PkgBuildBundlerMinifier)' == '' ">C:\Users\Danny\.nuget\packages\buildbundlerminifier\3.2.449</PkgBuildBundlerMinifier>
   </PropertyGroup>
 </Project>

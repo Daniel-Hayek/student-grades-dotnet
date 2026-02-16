@@ -58,7 +58,15 @@
               "target": "Package",
               "version": "[35.6.5, )"
             },
+            "BuildBundlerMinifier": {
+              "target": "Package",
+              "version": "[3.2.449, )"
+            },
             "DevExpress.AspNetCore.Reporting": {
+              "target": "Package",
+              "version": "[25.2.4, )"
+            },
+            "DevExpress.Drawing.Skia": {
               "target": "Package",
               "version": "[25.2.4, )"
             },

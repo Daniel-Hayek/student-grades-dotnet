@@ -9,6 +9,16 @@ builder.Services.AddDbContext<StudentGradesContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("StudentGradesContext") ?? throw new InvalidOperationException("Connection string 'StudentGradesContext' not found.")));
 
 
+builder.Services.AddDevExpressControls();
+
+builder.Services.ConfigureReportingServices(configurator =>
+{
+    configurator.ConfigureWebDocumentViewer(viewerConfigurator =>
+    {
+        viewerConfigurator.UseCachedReportSourceBuilder();
+    });
+});
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -33,7 +43,7 @@ using (var scope = app.Services.CreateScope())
 
 }
 
-
+app.UseDevExpressControls();
 
 app.UseHttpsRedirection();
 app.UseRouting();

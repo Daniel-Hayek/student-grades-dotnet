@@ -159,7 +159,7 @@
                         }
                     ],
                     editing: {
-                        mode: "popup",
+                        mode: "row",
                         allowUpdating: true,
                         allowDeleting: true,
                     },

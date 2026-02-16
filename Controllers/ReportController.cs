@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StudentGradesDotnet.Reports;
+using DevExpress.AspNetCore.Reporting.WebDocumentViewer;
 
 namespace StudentGradesDotnet.Controllers
 {
@@ -27,12 +28,15 @@ namespace StudentGradesDotnet.Controllers
 
             report.Parameters["StudentID"].Visible = false;
 
-            var stream = new MemoryStream();
-            report.ExportToPdf(stream);
-            stream.Position = 0;
+            return View(report);
 
-            return File(stream, "application/pdf");
+            //var stream = new MemoryStream();
+            //report.ExportToPdf(stream);
+            //stream.Position = 0;
+
+            //return File(stream, "application/pdf");
         }
     }
+
 }
 // DataGrid with inline editing, separate pages for submit and edit data, page with report viewer control

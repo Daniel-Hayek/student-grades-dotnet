@@ -16,7 +16,9 @@
 
 	<ItemGroup>
 		<PackageReference Include="Bogus" Version="35.6.5" />
+		<PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
 		<PackageReference Include="DevExpress.AspNetCore.Reporting" Version="25.2.4" />
+		<PackageReference Include="DevExpress.Drawing.Skia" Version="25.2.4" />
 		<PackageReference Include="DevExpress.Reporting.Core" Version="25.2.4" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.1">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

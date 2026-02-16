@@ -11,6 +11,8 @@
 
     <!-- DevExtreme theme -->
     <link rel="stylesheet" href="~/lib/devextreme/css/dx.light.css" />
+
+    <dx-reporting-styles />
 </head>
 <body class="dx-viewport">
     <header>
@@ -62,6 +64,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <dx-reporting-scripts />
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

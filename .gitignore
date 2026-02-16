@@ -1,2 +1,4 @@
 .vs/
 wwwroot/lib/Lib
+BuildHost-net472
+BuildHost-netcore
