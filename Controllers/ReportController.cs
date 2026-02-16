@@ -35,3 +35,4 @@ namespace StudentGradesDotnet.Controllers
         }
     }
 }
+// DataGrid with inline editing, separate pages for submit and edit data, page with report viewer control

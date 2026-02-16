@@ -8,6 +8,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Remove="wwwroot\lib\Lib\**" />
+		<Content Remove="wwwroot\lib\Lib\**" />
+		<EmbeddedResource Remove="wwwroot\lib\Lib\**" />
+		<None Remove="wwwroot\lib\Lib\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Bogus" Version="35.6.5" />
 		<PackageReference Include="DevExpress.AspNetCore.Reporting" Version="25.2.4" />
 		<PackageReference Include="DevExpress.Reporting.Core" Version="25.2.4" />

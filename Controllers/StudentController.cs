@@ -22,6 +22,11 @@ namespace StudentGradesDotnet.Controllers
             _studentService = studentService;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
 
         // GET: students
         // This was an endpoint created for testing, and it also provides ALL relevant data
