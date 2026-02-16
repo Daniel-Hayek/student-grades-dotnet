@@ -111,4 +111,19 @@ public class StudentService : IStudentService
 
         return student;
     }
+
+    public async Task<bool> DeleteStudent(StudentDto student)
+    {
+        var studentToDelete = await _context.Students.FindAsync(student.Id);
+
+        if (studentToDelete == null)
+        {
+            return false;
+        }
+
+        _context.Students.Remove(studentToDelete);
+        await _context.SaveChangesAsync();
+
+        return true;
+    }
 }

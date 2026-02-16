@@ -217,6 +217,16 @@
                             DevExpress.ui.notify(e.message);
                         }
                     },
+                    onRowRemoved: async (e) => {
+                        try {
+                            const id = e.data["id"];
+                            DevExpress.ui.notify(`Deleting student with ID ${id}...`);
+
+                            const res = await axios.post("/delete-student", e.data);
+                        } catch (e) {
+                            DevExpress.ui.notify(e.message);
+                        }
+                    },
                     onExporting: async (e) => {
                         try {
                             DevExpress.ui.notify("Exporting student data...");

@@ -86,5 +86,29 @@ namespace StudentGradesDotnet.Controllers
             }
         }
 
+
+        // POST: delete-student
+        // This endpoint is meant to be used to delete a student
+        [HttpPost]
+        [Route("/delete-student")]
+        public async Task<IActionResult> DeleteStudent([FromBody] StudentDto student)
+        {
+            try
+            {
+                var studentDeleted = await _studentService.DeleteStudent(student);
+
+                if (!studentDeleted)
+                {
+                    return NotFound();
+                }
+
+                return Ok("Student has been deleted");
+
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

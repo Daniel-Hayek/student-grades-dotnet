@@ -11,4 +11,6 @@ public interface IStudentService
     Task<StudentDto> AddStudent(StudentDto student);
 
     Task<StudentDto?> UpdateStudent(StudentDto student);
+
+    Task<bool> DeleteStudent(StudentDto student);
 }
