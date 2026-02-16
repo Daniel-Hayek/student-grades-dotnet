@@ -19,6 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    $(function () {
+        $("#allStudentReport").dxButton({
+            text: "All Students Report",
+            onClick: () => {
+                window.open(`/student-report`);
+            },
+        });
+    });
+
 
     // ---------------------------------------------------------------------------------------------------------
     // Functions being used in buttons
