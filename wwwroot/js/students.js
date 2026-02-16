@@ -174,6 +174,49 @@
                         enabled: true,
                         formats: ["xlsx"],
                     },
+                    onRowUpdated: async (e) => {
+                        try {
+                            const data = e.data;
+                            console.log(data);
+
+                            const gradesToSend = [];
+                            let course_Id = -2;
+
+                            for (const key in data) {
+                                course_Id++;
+                                if (key != "name" && key != "id" && key != "Average" && data[key] != null) {
+                                    gradesToSend.push({
+                                        course_Id: course_Id,
+                                        course_Name: key,
+                                        gradeValue: data[key],
+                                    });
+                                }
+
+                            }
+
+                            const payload = {
+                                id: data.id,
+                                name: data.name,
+                                grades: gradesToSend
+                            };
+
+                            console.log(payload);
+
+                            try {
+                                const res = await axios.post("/update-student", payload);
+
+                                console.log(res);
+
+                                getData();
+
+                                DevExpress.ui.notify({ message: "Student list updated", type: "info", displayTime: 3000 });
+                            } catch (e) {
+                                DevExpress.ui.notify("That student already exists!", "error");
+                            }
+                        } catch (e) {
+                            DevExpress.ui.notify(e.message);
+                        }
+                    },
                     onExporting: async (e) => {
                         try {
                             DevExpress.ui.notify("Exporting student data...");
