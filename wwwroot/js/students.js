@@ -1,18 +1,47 @@
 ﻿document.addEventListener("DOMContentLoaded", async () => {
-    console.log("Loaded");
 
     try {
         const res = await axios.get("/students");
 
         const students = res.data;
 
-        console.log(students);
+        const studentGrades = students.map(student => {
+            let average = 0;
+            let num = 0;
 
+            const row = { id: student.id, name: student.name };
+            student.grades.forEach(grade => {
+                row[grade.course_Name] = grade.gradeValue;
+                average += grade.gradeValue;
+                num++;
+            });
+
+            row["Average"] = average / num;
+            return row;
+        });
+
+        console.log(studentGrades[0]);
 
         $(function () {
             $("#studentDataGrid").dxDataGrid({
-                dataSource: students,
-
+                dataSource: studentGrades,
+                columns: [
+                    "id", { dataField: "name", caption: "Student Name" },
+                    {
+                        dataField: "Math", validationRules: [{ type: "range", min: 0, max: 100, message: "Grade must be 0–100" }]
+                    },
+                    { dataField: "Physics", validationRules: [{ type: "range", min: 0, max: 100, message: "Grade must be 0–100" }] },
+                    { dataField: "Chemistry", validationRules: [{ type: "range", min: 0, max: 100, message: "Grade must be 0–100" }] },
+                    { dataField: "Biology", validationRules: [{ type: "range", min: 0, max: 100, message: "Grade must be 0–100" }] },
+                    { dataField: "English", validationRules: [{ type: "range", min: 0, max: 100, message: "Grade must be 0–100" }] },
+                    { dataField: "Average", validationRules: [{ type: "range", min: 0, max: 100, message: "Grade must be 0–100" }] }
+                ],
+                editing: {
+                    mode: "popup",
+                    allowUpdating: true,
+                    allowDeleting: true,
+                    allowAdding: true
+                },
             });
         });
     } catch (e) {
