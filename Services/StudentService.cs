@@ -22,9 +22,9 @@ public class StudentService : IStudentService
             .Include(s => s.Grades)
             .Select(s => new StudentDto(
                 s.Id,
-                s.Name,
-                s.Grades
-                    .Select(g => new GradeDto(g.Course_Id, g.Course_Name, g.GradeValue))
+                s.Name!,
+                s.Grades!
+                    .Select(g => new GradeDto(g.Course_Id, g.Course_Name!, g.GradeValue))
                     .ToList()
             ))
             .ToListAsync();
@@ -39,8 +39,8 @@ public class StudentService : IStudentService
             .OrderBy(s => s.Name)
             .Select(s => new StudentAverageDto(
                 s.Id,
-                s.Name,
-                s.Grades.Average(g => g.GradeValue)
+                s.Name!,
+                s.Grades!.Average(g => g.GradeValue)
             ))
             .ToListAsync();
     }
