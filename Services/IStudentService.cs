@@ -9,4 +9,6 @@ public interface IStudentService
     Task<IEnumerable<StudentAverageDto>> StudentAverages();
 
     Task<StudentDto> AddStudent(StudentDto student);
+
+    Task<StudentDto?> UpdateStudent(StudentDto student);
 }

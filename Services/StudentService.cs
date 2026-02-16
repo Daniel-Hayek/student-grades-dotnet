@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using StudentGradesDotnet.Data;
 using StudentGradesDotnet.DTOs;
@@ -70,6 +71,43 @@ public class StudentService : IStudentService
         await _context.SaveChangesAsync();
 
         var res = new StudentDto(student.Id, student.Name, student.Grades);
+
+        return student;
+    }
+
+    public async Task<StudentDto?> UpdateStudent(StudentDto student)
+    {
+        var exists = await _context.Students.Include(s => s.Grades).FirstOrDefaultAsync(s => s.Id == student.Id);
+
+        if (exists == null)
+        {
+            return null;
+        }
+
+        exists.Name = student.Name;
+
+        foreach (GradeDto g in student.Grades)
+        {
+            var gradeExists = exists.Grades!.FirstOrDefault(x => x.Course_Id == g.Course_Id);
+
+            if (gradeExists != null)
+            {
+                gradeExists.GradeValue = g.GradeValue;
+            }
+            else
+            {
+                exists.Grades!.Add(new Grade
+                {
+                    Student_Id = student.Id,
+                    Course_Id = g.Course_Id,
+                    Course_Name = g.Course_Name,
+                });
+            }
+
+
+        }
+
+        await _context.SaveChangesAsync();
 
         return student;
     }

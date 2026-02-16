@@ -68,5 +68,23 @@ namespace StudentGradesDotnet.Controllers
             }
         }
 
+        // POST: update-student
+        // This endpoint is meant to be used to update a student
+        [HttpPost]
+        [Route("/update-student")]
+        public async Task<IActionResult> UpdateStudent([FromBody] StudentDto student)
+        {
+            try
+            {
+                var updatedStudent = await _studentService.UpdateStudent(student);
+
+                return Ok(updatedStudent);
+            }
+            catch (Exception e)
+            {
+                return Conflict(e.Message);
+            }
+        }
+
     }
 }
