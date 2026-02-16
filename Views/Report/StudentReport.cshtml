@@ -1,6 +1,11 @@
-﻿@using DevExpress.AspNetCore
-@model StudentGradesDotnet.Reports.Report2
+﻿@model StudentGradesDotnet.Reports.Report2
+@using DevExpress.AspNetCore
+@using StudentGradesDotnet.Reports
+
+<link rel="stylesheet" href="~/css/reporting.viewer.part.bundle.css" />
+<script src="~/js/reporting.viewer.part.bundle.js"></script>
 
 @(Html.DevExpress().WebDocumentViewer("viewer")
     .Height("1000px")
-    .Bind(Model))
+    .Bind(new Report2())
+)

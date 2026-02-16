@@ -14,6 +14,7 @@
 		<None Remove="wwwroot\lib\Lib\**" />
 	</ItemGroup>
 
+
 	<ItemGroup>
 		<PackageReference Include="Bogus" Version="35.6.5" />
 		<PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
@@ -33,5 +34,4 @@
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="10.0.1" />
 		<PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.2" />
 	</ItemGroup>
-
 </Project>

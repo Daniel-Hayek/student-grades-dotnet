@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DevExpress.AspNetCore.Reporting.WebDocumentViewer;
+using DevExpress.AspNetCore.Reporting.WebDocumentViewer.Native.Services;
+using DevExpress.CodeParser;
+using Microsoft.AspNetCore.Mvc;
 using StudentGradesDotnet.Reports;
-using DevExpress.AspNetCore.Reporting.WebDocumentViewer;
 
 namespace StudentGradesDotnet.Controllers
 {
@@ -28,7 +30,7 @@ namespace StudentGradesDotnet.Controllers
 
             report.Parameters["StudentID"].Visible = false;
 
-            return View(report);
+            return View("StudentReport", report);
 
             //var stream = new MemoryStream();
             //report.ExportToPdf(stream);
@@ -38,5 +40,10 @@ namespace StudentGradesDotnet.Controllers
         }
     }
 
+    public class CustomWebDocumentViewerController : WebDocumentViewerController
+    {
+        public CustomWebDocumentViewerController(IWebDocumentViewerMvcControllerService controllerService)
+            : base(controllerService) { }
+    }
 }
 // DataGrid with inline editing, separate pages for submit and edit data, page with report viewer control

@@ -11,13 +11,6 @@ builder.Services.AddDbContext<StudentGradesContext>(options =>
 
 builder.Services.AddDevExpressControls();
 
-builder.Services.ConfigureReportingServices(configurator =>
-{
-    configurator.ConfigureWebDocumentViewer(viewerConfigurator =>
-    {
-        viewerConfigurator.UseCachedReportSourceBuilder();
-    });
-});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
