@@ -26,7 +26,8 @@
             $("#studentDataGrid").dxDataGrid({
                 dataSource: studentGrades,
                 columns: [
-                    "id", { dataField: "name", caption: "Student Name" },
+                    { dataField: "id", caption: "ID", allowEditing: false },
+                    { dataField: "name", caption: "Student Name", allowEditing: false },
                     {
                         dataField: "Math", validationRules: [{ type: "range", min: 0, max: 100, message: "Grade must be 0–100" }]
                     },
@@ -34,7 +35,9 @@
                     { dataField: "Chemistry", validationRules: [{ type: "range", min: 0, max: 100, message: "Grade must be 0–100" }] },
                     { dataField: "Biology", validationRules: [{ type: "range", min: 0, max: 100, message: "Grade must be 0–100" }] },
                     { dataField: "English", validationRules: [{ type: "range", min: 0, max: 100, message: "Grade must be 0–100" }] },
-                    { dataField: "Average", validationRules: [{ type: "range", min: 0, max: 100, message: "Grade must be 0–100" }] }
+                    {
+                        dataField: "Average", allowEditing: false
+                    }
                 ],
                 editing: {
                     mode: "popup",
