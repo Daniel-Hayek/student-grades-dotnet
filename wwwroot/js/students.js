@@ -163,6 +163,39 @@
                         allowUpdating: true,
                         allowDeleting: true,
                     },
+                    showBorders: true,
+                    rowAlternationEnabled: true,
+                    searchPanel: {
+                        visible: true,
+                        width: 240,
+                        placeholder: "Search...",
+                    },
+                    export: {
+                        enabled: true,
+                        formats: ["xlsx"],
+                    },
+                    onExporting: async (e) => {
+                        try {
+                            DevExpress.ui.notify("Exporting student data...");
+
+                            const workbook = new ExcelJS.Workbook();
+                            const worksheet = workbook.addWorksheet("Main sheet");
+
+                            await DevExpress.excelExporter.exportDataGrid({
+                                worksheet: worksheet,
+                                component: e.component,
+                            });
+
+                            const buffer = await workbook.xlsx.writeBuffer();
+
+                            saveAs(
+                                new Blob([buffer], { type: "application/octet-stream" }),
+                                "StudentGrades.xlsx",
+                            );
+                        } catch (e) {
+                            DevExpress.ui.notify(e.message);
+                        }
+                    },
                 });
             });
         } catch (e) {

@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             saveAs(
                                 new Blob([buffer], { type: "application/octet-stream" }),
-                                "StudentData.xlsx",
+                                "StudentAverages.xlsx",
                             );
                         } catch (e) {
                             DevExpress.ui.notify(e.message);
